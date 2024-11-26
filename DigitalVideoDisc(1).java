@@ -1,11 +1,11 @@
 public class DigitalVideoDisc {
+    private static int nbDigitalVideoDiscs = 0; // Class variable to keep track of DVD count
+    private int id; // Instance variable for unique DVD ID
     private String title;
     private String category;
     private String director;
     private int length;
     private float cost;
-    private static int nbDigitalVideoDiscs = 0;  // Class attribute to count DVDs
-    private int id;  // Instance attribute to store unique ID
 
     // Constructor
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
@@ -14,10 +14,14 @@ public class DigitalVideoDisc {
         this.director = director;
         this.length = length;
         this.cost = cost;
-        this.id = ++nbDigitalVideoDiscs;  // Increment and assign unique ID
+        this.id = ++nbDigitalVideoDiscs; // Increment the global DVD count and assign to the DVD
     }
 
-    // Getter and Setter methods
+    // Getter methods
+    public int getId() {
+        return id;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -38,20 +42,14 @@ public class DigitalVideoDisc {
         return cost;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public static int getNbDigitalVideoDiscs() {
-        return nbDigitalVideoDiscs;
-    }
-
+    // Method to check if a DVD matches a title
     public boolean isMatch(String title) {
-        return this.title.equalsIgnoreCase(title);
+        return this.title.equalsIgnoreCase(title); // Case-insensitive comparison
     }
 
+    // Override toString method for easy printing
     @Override
     public String toString() {
-        return "DVD - " + title + " - " + category + " - " + director + " - " + length + " mins: " + cost + " $";
+        return "DVD - " + title + " - " + category + " - " + director + " - " + length + " minutes: " + cost + " $";
     }
 }
